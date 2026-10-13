@@ -189,16 +189,15 @@
   <script>
     // Add as many names as you like. Each key is the trigger name (lowercase),
     // and its value is that person's letter: heading, an array of paragraphs, and a signature.
-   const NAMES = ["irene", "mark", "battung"]; // Add more names as needed
-    const LETTER = {
-      "irene": {
-        heading: "My dearest, Irene",
-        paragraphs: [
-          "huh"
-        ],
-        signature: "Sota"
-      },
-    };
+  const names = ["irene", "mark", "battung"];
+  const LETTER = {};
+    for (const name of names) {
+      LETTER[name] = {
+    heading: `My dearest, ${name}`,
+    paragraphs: ["huh"],
+    signature: "Sota"
+  };
+}
 
     const input = document.getElementById('username');
     const error = document.getElementById('error');
