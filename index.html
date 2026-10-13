@@ -1,150 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>surprise</title>
-<style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #dab9fd 0%, #ffffff 45%, #d2b3f3 75%, #9937fa 100%);
-    font-family: 'Georgia', 'Times New Roman', serif;
-    padding: 20px;
-  }
+  <meta charset="UTF-8">
+  <title>surprise</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  .card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    padding: 48px 40px;
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(147, 51, 234, 0.15);
-  }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #dab9fd 0%, #ffffff 45%, #d2b3f3 75%, #9937fa 100%);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      padding: 20px;
+    }
 
-  h1 {
-    color: #6b21a8;
-    font-size: 1.6em;
-    margin-bottom: 8px;
-    font-weight: 400;
-  }
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(147, 51, 234, 0.15);
+    }
 
-  p.subtitle {
-    color: #9333ea;
-    margin-bottom: 28px;
-    font-size: 0.95em;
-  }
+    h1 {
+      color: #6b21a8;
+      font-size: 1.6em;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
 
-  input[type="text"] {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1.5px solid #d8b4fe;
-    font-size: 1em;
-    outline: none;
-    background: rgba(255,255,255,0.8);
-    color: #4c1d95;
-    text-align: center;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
+    p.subtitle {
+      color: #9333ea;
+      margin-bottom: 28px;
+      font-size: 0.95em;
+    }
 
-  input[type="text"]:focus {
-    border-color: #a855f7;
-    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
-  }
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #d8b4fe;
+      font-size: 1em;
+      outline: none;
+      background: rgba(255, 255, 255, 0.8);
+      color: #4c1d95;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
 
-  .error {
-    color: #a855f7;
-    font-size: 0.85em;
-    margin-top: 10px;
-    min-height: 18px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
+    input[type="text"]:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+    }
 
-  .error.show { opacity: 1; }
+    .error {
+      color: #a855f7;
+      font-size: 0.85em;
+      margin-top: 10px;
+      min-height: 18px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
 
-  .overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(107, 33, 168, 0.35);
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    padding: 20px;
-  }
+    .error.show {
+      opacity: 1;
+    }
 
-  .overlay.show {
-    display: flex;
-    animation: fadeIn 0.4s ease;
-  }
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(107, 33, 168, 0.35);
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 20px;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+    .overlay.show {
+      display: flex;
+      animation: fadeIn 0.4s ease;
+    }
 
-  .letter {
-    background: #fffaf5;
-    border-radius: 4px;
-    padding: 44px 38px;
-    max-width: 460px;
-    width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    position: relative;
-    animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    max-height: 85vh;
-    overflow-y: auto;
-  }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
 
-  @keyframes pop {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .letter h2 {
-    color: #be185d;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 0;
-    font-size: 1.4em;
-  }
+    .letter {
+      background: #fffaf5;
+      border-radius: 4px;
+      padding: 44px 38px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
 
-  .letter p {
-    color: #57534e;
-    line-height: 1.8;
-    font-size: 1.02em;
-  }
+    @keyframes pop {
+      from {
+        transform: scale(0.85);
+        opacity: 0;
+      }
 
-  .signature {
-    text-align: right;
-    margin-top: 24px;
-    font-style: italic;
-    color: #be185d;
-  }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-  .close-btn {
-    display: block;
-    margin: 28px auto 0;
-    background: #f9a8d4;
-    color: #831843;
-    border: none;
-    padding: 10px 26px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-family: inherit;
-  }
+    .letter h2 {
+      color: #be185d;
+      font-weight: 400;
+      text-align: center;
+      margin-top: 0;
+      font-size: 1.4em;
+    }
 
-  .close-btn:hover { background: #f472b6; }
-</style>
+    .letter p {
+      color: #57534e;
+      line-height: 1.8;
+      font-size: 1.02em;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 24px;
+      font-style: italic;
+      color: #be185d;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 28px auto 0;
+      background: #f9a8d4;
+      color: #831843;
+      border: none;
+      padding: 10px 26px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-family: inherit;
+    }
+
+    .close-btn:hover {
+      background: #f472b6;
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="card">
@@ -164,66 +185,68 @@
   </div>
 
   <audio id="music" src="Minamahal.mp3" preload="auto"></audio>
-  
-<script>
-  // Add as many names as you like. Each key is the trigger name (lowercase),
-  // and its value is that person's letter: heading, an array of paragraphs, and a signature.
- const NAMES = ["irene", "mark", "battung"];
- const LETTER = {
-      heading: "My Dearest, Irene.",
-      paragraphs: [
-        "huh"
-      ],
-      signature: "Sota"
-    },
-  };
 
-  const input = document.getElementById('username');
-  const error = document.getElementById('error');
-  const overlay = document.getElementById('overlay');
-  const closeBtn = document.getElementById('closeBtn');
-  const letterHeading = document.getElementById('letterHeading');
-  const letterBody = document.getElementById('letterBody');
-  const letterSignature = document.getElementById('letterSignature');
+  <script>
+    // Add as many names as you like. Each key is the trigger name (lowercase),
+    // and its value is that person's letter: heading, an array of paragraphs, and a signature.
+   const NAMES = ["irene", "mark", "battung"]; // Add more names as needed
+    const LETTER = {
+      "irene": {
+        heading: "My dearest, Irene",
+        paragraphs: [
+          "huh"
+        ],
+        signature: "Sota"
+      },
+    };
 
-  function showLetter(letter) {
-    letterHeading.textContent = letter.heading;
-    letterBody.innerHTML = letter.paragraphs.map(p => `<p>${p}</p>`).join('');
-    letterSignature.textContent = letter.signature;
-    overlay.classList.add('show');
-  }
+    const input = document.getElementById('username');
+    const error = document.getElementById('error');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const letterHeading = document.getElementById('letterHeading');
+    const letterBody = document.getElementById('letterBody');
+    const letterSignature = document.getElementById('letterSignature');
 
-  input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      const music = document.getElementById('music');
-      const value = input.value.trim().toLowerCase();
-      const letter = LETTER[value];
-      if (letter) {
-        error.classList.remove('show');
-        showLetter(letter);
-        music.play().catch(() => {});
-      } else {
-        error.classList.add('show');
-      }
+    function showLetter(letter) {
+      letterHeading.textContent = letter.heading;
+      letterBody.innerHTML = letter.paragraphs.map(p => `<p>${p}</p>`).join('');
+      letterSignature.textContent = letter.signature;
+      overlay.classList.add('show');
     }
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        const music = document.getElementById('music');
+        const value = input.value.trim().toLowerCase();
+        const letter = LETTER[value];
+        if (letter) {
+          error.classList.remove('show');
+          showLetter(letter);
+          music.play().catch(() => { });
+        } else {
+          error.classList.add('show');
+        }
+      }
     });
 
-  input.addEventListener('input', function() {
-    error.classList.remove('show');
-  });
+    input.addEventListener('input', function () {
+      error.classList.remove('show');
+    });
 
-  closeBtn.addEventListener('click', function() {
-    overlay.classList.remove('show');
-    input.value = '';
-  });
-
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) {
+    closeBtn.addEventListener('click', function () {
       overlay.classList.remove('show');
       input.value = '';
-    }
-  });
-</script>
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('show');
+        input.value = '';
+      }
+    });
+  </script>
 
 </body>
+
 </html>
